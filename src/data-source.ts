@@ -11,7 +11,6 @@ const AppDataSource = new DataSource(
 		  }
 		: {
 				type: "postgres",
-				// url: process.env.DATABASE_URL,
 				ssl:
 					process.env.NODE_ENV === "production"
 						? { rejectUnauthorized: false }
@@ -31,6 +30,10 @@ const AppDataSource = new DataSource(
 				username: process.env.DB_USER,
 				password: process.env.DB_PASSWORD,
 				database: process.env.DB,
+				url:
+					process.env.NODE_ENV === "production"
+						? process.env.DATABASE_URL
+						: undefined,
 		  }
 );
 
