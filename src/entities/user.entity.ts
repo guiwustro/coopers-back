@@ -14,6 +14,7 @@ export class User {
 	@Column({ length: 120 })
 	email: string;
 
+	@Exclude()
 	@OneToMany(() => Task, (task) => task.user)
 	tasks: Task[];
 }

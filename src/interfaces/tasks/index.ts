@@ -1,5 +1,4 @@
 import { TaskStatus } from "../../entities/task.entity";
-import { User } from "../../entities/user.entity";
 
 export interface ITask {
 	id: number;
@@ -15,4 +14,5 @@ export interface ITaskRequest {
 export interface IEditTask {
 	name?: string;
 	status?: TaskStatus;
+	index_number?: number;
 }

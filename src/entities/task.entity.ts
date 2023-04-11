@@ -15,8 +15,11 @@ export class Task {
 	@Column({ type: "text" })
 	name: string;
 
-	@Column({ type: "enum", enum: TaskStatus, default: TaskStatus.IN_PROGRESS })
-	status: TaskStatus;
+	@Column({ default: "progress" })
+	status: "new" | "progress" | "done";
+
+	@Column()
+	index_number: number;
 
 	@ManyToOne(() => User, (user) => user.tasks)
 	user: User;

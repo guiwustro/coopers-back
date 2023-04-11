@@ -9,6 +9,9 @@ const taskGetService = async (userId: number) => {
 				id: userId,
 			},
 		},
+		order: {
+			index_number: "ASC",
+		},
 	});
 
 	return tasks;
