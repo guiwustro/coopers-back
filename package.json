@@ -11,17 +11,7 @@
 		"build": "tsc",
 		"start": "node dist/src/server.js"
 	},
-	"devDependencies": {
-		"@types/bcrypt": "^5.0.0",
-		"@types/cors": "^2.8.13",
-		"@types/express": "^4.17.17",
-		"@types/jest": "^29.5.0",
-		"@types/node": "^18.15.11",
-		"@types/supertest": "^2.0.12",
-		"jest": "^29.2.2",
-		"ts-jest": "^29.0.3",
-		"sqlite3": "^5.1.2"
-	},
+	"devDependencies": {},
 	"dependencies": {
 		"@types/jsonwebtoken": "^9.0.1",
 		"bcrypt": "^5.1.0",
@@ -37,6 +27,15 @@
 		"typeorm": "^0.3.14",
 		"yup": "^0.32.11",
 		"ts-node-dev": "^2.0.0",
-		"typescript": "^5.0.4"
+		"typescript": "^5.0.4",
+		"@types/bcrypt": "^5.0.0",
+		"@types/cors": "^2.8.13",
+		"@types/express": "^4.17.17",
+		"@types/jest": "^29.5.0",
+		"@types/node": "^18.15.11",
+		"@types/supertest": "^2.0.12",
+		"jest": "^29.2.2",
+		"ts-jest": "^29.0.3",
+		"sqlite3": "^5.1.2"
 	}
 }
