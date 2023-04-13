@@ -8,6 +8,7 @@ import {
 	taskCreateSchema,
 	validateTaskCreate,
 } from "../middlewares/validateTask.middleware";
+import taskDeleteAllController from "../controllers/tasks/taskDeleteAll.controller";
 
 const routes = Router();
 
@@ -20,6 +21,7 @@ export const taskRoutes = () => {
 	);
 	routes.get("", authUser, taskGetController);
 	routes.patch("/:id", authUser, taskUpdateController);
+	routes.delete("/all/:status", authUser, taskDeleteAllController);
 	routes.delete("/:id", authUser, taskDeleteController);
 
 	return routes;
