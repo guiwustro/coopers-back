@@ -30,6 +30,12 @@ Para instalar as dependências:
 yarn install
 ```
 
+Para executar os testes:
+
+```
+yarn test
+```
+
 Para subir o container:
 
 ```
