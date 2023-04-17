@@ -21,9 +21,6 @@ export class Task {
 	@Column()
 	index_number: number;
 
-	@Column({ nullable: true })
-	index_number_done: number;
-
 	@ManyToOne(() => User, (user) => user.tasks)
 	user: User;
 }

@@ -17,17 +17,16 @@ const taskCreateService = async (newTaskData: ITaskRequest, userId: number) => {
 
 	if (!owner) throw new AppError("Logged in user doesn't exist");
 
-	const orderedTasksByIndex = owner.tasks.sort(
-		(a, b) => a.index_number - b.index_number
-	);
-	let lastIndex = 0;
+	const orderedTasksByIndex = owner.tasks
+		.filter((t) => t.status === "progress")
+		.sort((a, b) => b.index_number - a.index_number);
+	let firstIndex = 0;
 	if (orderedTasksByIndex.length > 0) {
-		lastIndex =
-			orderedTasksByIndex[orderedTasksByIndex.length - 1].index_number;
+		firstIndex = orderedTasksByIndex[0].index_number + 1;
 	}
 
 	const newTask = taskRepository.create(newTaskData);
-	newTask.index_number = lastIndex + 1024;
+	newTask.index_number = firstIndex;
 	newTask.user = owner;
 	const taskSaved = await taskRepository.save(newTask);
 	return taskSaved;

@@ -6,7 +6,7 @@ import * as yup from "yup";
 import { SchemaOf } from "yup";
 
 export const userCreateSchema: SchemaOf<IUserRequest> = yup.object().shape({
-	email: yup.string().required().email(),
+	username: yup.string().required(),
 	password: yup.string().required(),
 });
 
