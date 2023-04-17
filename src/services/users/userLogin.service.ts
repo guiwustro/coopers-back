@@ -7,12 +7,12 @@ import { User } from "../../entities/user.entity";
 import { IUserRequest } from "../../interfaces/users";
 
 const UserLoginService = async ({
-	email,
+	username,
 	password,
 }: IUserRequest): Promise<string> => {
 	const userRepository = AppDataSource.getRepository(User);
 
-	const user = await userRepository.findOneBy({ email });
+	const user = await userRepository.findOneBy({ username });
 	if (!user) throw new AppError("Wrong e-mail or password.", 403);
 
 	if (!bcrypt.compareSync(password, user.password))

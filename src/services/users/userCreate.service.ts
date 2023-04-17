@@ -5,19 +5,19 @@ import AppDataSource from "../../data-source";
 import { AppError } from "../../errors/appError";
 
 const userCreateService = async ({
-	email,
+	username,
 	password,
 }: IUserRequest): Promise<IUserRequest> => {
 	const userRepository = AppDataSource.getRepository(User);
 	const userAlreadyExists = await userRepository.findOneBy({
-		email,
+		username,
 	});
 	if (userAlreadyExists) {
 		throw new AppError("Email already exists");
 	}
 	const user = new User();
 
-	user.email = email;
+	user.username = username;
 	user.password = bcrypt.hashSync(password, 10);
 
 	userRepository.create(user);

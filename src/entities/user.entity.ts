@@ -12,7 +12,7 @@ export class User {
 	password: string;
 
 	@Column({ length: 120 })
-	email: string;
+	username: string;
 
 	@Exclude()
 	@OneToMany(() => Task, (task) => task.user)
