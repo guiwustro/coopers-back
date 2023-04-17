@@ -15,7 +15,8 @@ Link da API</a>
 API do <a href="https://github.com/guiwustro/coopers-front"> Projeto Coopers
 </a> realizada em NodeJS + Typescript. Para mais detalhes sobre o projeto, por
 favor visite o <a href="https://github.com/guiwustro/coopers-front"> Projeto
-Front-end </a>
+Front-end </a>. Para verificar as rotas criadas, com exemplos de requisições, é
+possível importar no Insonmia utilizando o arquivo InsonmiaRequests.json.
 
 ## Como iniciar o projeto
 
