@@ -52,23 +52,28 @@ describe("/tasks", () => {
 		expect(response.status).toBe(200);
 	});
 
-	test("PATCH /tasks/:id -  should be able to change the order correctly", async () => {
+	test("PATCH /tasks/:id -  should be able to change the index number", async () => {
 		const response = await request(app)
 			.get("/tasks")
 			.set("Authorization", `Bearer ${token}`);
 
-		// Colocar a Task 1 entre a Task 4 e 5
 		const task1 = response.body[0];
-		const task4Index = response.body[3].index_number;
-		const task5Index = response.body[4].index_number;
-
-		const newIndex = (task4Index + task5Index) / 2;
+		// Colocar a Task 0 no index 1
+		const newIndex = 1;
 
 		const responseTask = await request(app)
 			.patch(`/tasks/${task1.id}`)
-			.send({ index_number: newIndex })
+			.send({ index_number: newIndex, status: "progress" })
 			.set("Authorization", `Bearer ${token}`);
 		expect(responseTask.status).toBe(200);
 		expect(responseTask.body.index_number).toEqual(newIndex);
+
+		// Verificar se a Task 1 está no index 5
+		const responseAllTasksOrdered = await request(app)
+			.get("/tasks")
+			.set("Authorization", `Bearer ${token}`);
+		const task1Updated = responseAllTasksOrdered.body[1];
+		expect(task1Updated.id).toEqual(task1.id);
+		expect(task1Updated.name).toEqual(task1.name);
 	});
 });

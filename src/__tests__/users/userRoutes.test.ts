@@ -25,10 +25,10 @@ describe("/users", () => {
 		const response = await request(app).post("/users").send(mockedUser);
 
 		expect(response.body).toHaveProperty("id");
-		expect(response.body).toHaveProperty("email");
+		expect(response.body).toHaveProperty("username");
 		expect(response.body).not.toHaveProperty("password");
 
-		expect(response.body.email).toEqual("guilherme@user.com");
+		expect(response.body.username).toEqual("guilherme@user.com");
 
 		expect(response.status).toBe(201);
 	});

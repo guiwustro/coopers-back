@@ -27,9 +27,9 @@ describe("/users", () => {
 		expect(response.body).toHaveProperty("token");
 	});
 
-	test("POST /users Should not be able to login with an incorrect email", async () => {
+	test("POST /users Should not be able to login with an incorrect username", async () => {
 		const response = await request(app).post("/login").send({
-			email: "wrong.email@user.com",
+			username: "wrong.email@user.com",
 			password: "passw23#W",
 		});
 		expect(response.status).toBe(403);
@@ -38,7 +38,7 @@ describe("/users", () => {
 
 	test("POST /users Should not be able to login with an incorrect password", async () => {
 		const response = await request(app).post("/login").send({
-			email: "guilherme@user.com",
+			username: "guilherme@user.com",
 			password: "wrongPassword@1",
 		});
 		expect(response.status).toBe(403);
